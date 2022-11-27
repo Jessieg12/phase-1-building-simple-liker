@@ -3,6 +3,76 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+// document.addEventListener('DOMContentLoaded', (e) => {
+//   e.preventDefault()
+
+  const hidden = document.querySelector("#modal").className = 'hidden'
+  
+
+  const clickHeart = document.querySelectorAll('.like-glyph')
+  for(const empHeart of clickHeart)
+  empHeart.addEventListener('click', clickEvent)
+
+
+
+  function clickEvent(e){
+    const clickedTarget = e.target
+    mimicServerCall()
+    .then((data)=> {
+      if(clickedTarget.innerText === EMPTY_HEART){
+        clickedTarget.innerText = FULL_HEART
+        clickedTarget.className = "activated-heart"
+    } else {
+        (clickedTarget.innerText === FULL_HEART)
+        clickedTarget.innerText = EMPTY_HEART
+        clickedTarget.className = "like-glyph"
+        }
+    })
+    .catch((error)=> {
+      hidden.className = ' '
+      hidden.innerHTML = error
+      setTimeout(() => hidden.className = 'hidden', 3000)
+    })
+  }
+
+
+
+  // clickHeart.addEventListener('click', 
+  //   mimicServerCall('urlRequest')
+  //   .then(() => {
+  //     if (clickHeart.innerText === EMPTY_HEART)
+  //       clickHeart.innerText = FULL_HEART
+  //       clickHeart.class = 'activated-heart'
+  //   })
+  //   .catch((error)=> {
+
+
+  //   })
+  // )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -23,3 +93,5 @@ function mimicServerCall(url="http://mimicServer.example.com", config={}) {
     }, 300);
   });
 }
+
+// })
