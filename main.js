@@ -15,6 +15,7 @@ const FULL_HEART = '♥'
 
 
 
+  
   function clickEvent(e){
     const clickedTarget = e.target
     mimicServerCall()
